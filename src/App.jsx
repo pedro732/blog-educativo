@@ -3,13 +3,14 @@ import Header from './components/Header';
 import Card from './components/Card';
 import axios from 'axios';
 import './App.css';
+import API_URL from './config';
 
 function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     console.log('Fetching cards...');
-    axios.get('/api/cards')
+    axios.get(`${API_URL}/cards`)
       .then(response => {
         console.log('Cards fetched:', response.data);
         setCards(response.data);
