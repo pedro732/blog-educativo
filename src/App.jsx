@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Card from './components/Card';
-import axios from 'axios';
 import './App.css';
-import API_URL from './config';
+import { getCards } from './services/CardService'; // Importar el servicio
 
 function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     console.log('Fetching cards...');
-    axios.get(`${API_URL}/cards`)
-      .then(response => {
-        console.log('Cards fetched:', response.data);
-        setCards(response.data);
-      })
-      .catch(error => {
+    const fetchCards = async () => {
+      try {
+        const cardsData = await getCards();
+        console.log('Cards fetched:', cardsData);
+        setCards(cardsData);
+      } catch (error) {
         console.error('Error fetching cards:', error);
-        if (error.response) {
-          console.log('Error details:', error.response.data);
-        }
-      });
+      }
+    };
+
+    fetchCards();
   }, []);
 
   return (
@@ -29,7 +28,7 @@ function App() {
       <div className="card-container">
         {cards.map(card => (
           <Card
-            key={card._id}
+            key={card.id}
             imageUrl={card.imageUrl}
             summary={card.summary}
             link={card.link}
