@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Card from './components/Card';
 import './App.css';
-import { getCards } from './services/CardService'; // Importar el servicio
+import { getCards } from './services/CardService';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -29,9 +29,14 @@ function App() {
         {cards.map(card => (
           <Card
             key={card.id}
+            id={card.id}
             imageUrl={card.imageUrl}
             summary={card.summary}
             link={card.link}
+            likes={card.likes}
+            dislikes={card.dislikes}
+            stars={card.stars}
+            hearts={card.hearts}
           />
         ))}
       </div>

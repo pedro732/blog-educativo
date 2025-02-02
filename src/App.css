@@ -9,10 +9,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
   margin: 0 auto; /* Centrar el contenedor */
   gap: 20px; /* Añadir espacio entre las tarjetas */
+}
+
+.card {
+  flex: 1 1 calc(25% - 40px); /* Ajusta el tamaño de las tarjetas para que haya cuatro por fila */
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 16px;
 }
