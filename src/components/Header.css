@@ -1,34 +1,49 @@
 .header {
-    background-color: #f8f9fa;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-  
+  background-color: #f8f9fa;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.header-icon {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
   .header h1 {
-    margin: 0;
-    font-size: 2rem;
-    flex-grow: 1;
-    text-align: center;
-  }
-  
-  .header-icon {
     font-size: 1.5rem;
   }
-  
-  @media (max-width: 600px) {
-    .header h1 {
-      font-size: 1.5rem;
-    }
-  
-    .header-icon {
-      font-size: 1.2rem;
-    }
+
+  .header-icon {
+    font-size: 1.2rem;
   }
+}
+.study-guides-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+    left: -10px;
+}
+
+.study-guides-button:hover {
+  background-color: #0056b3;
+}
