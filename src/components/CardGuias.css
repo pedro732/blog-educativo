@@ -1,0 +1,15 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    flex: 1; /* Para que las tarjetas se expandan */
+    min-width: 200px; /* Ancho mínimo de las tarjetas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: space-around; /* Espacio entre las tarjetas */
+    margin-top: 20px;
+  }
