@@ -32,20 +32,33 @@ function GuiasDeEstudio() {
         <p>Aquí encontrarás recursos y materiales para ayudarte en tu aprendizaje.</p>
         
         <div className="cards-container">
-          <Card title="Primer Medio">
-            {guias1.map(guia => (
-              <a key={guia.id} href={guia.link} target="_blank" rel="noopener noreferrer">
-                {guia.titulo}
-              </a>
-            ))}
-          </Card>
-          <Card title="Segundo Medio">
-            {guias2.map(guia => (
-              <a key={guia.id} href={guia.link} target="_blank" rel="noopener noreferrer">
-                {guia.titulo}
-              </a>
-            ))}
-          </Card>
+        <Card title="Primer Medio">
+  {guias1.map(guia => (
+    <div key={guia.id}>
+      <a href={guia.link} target="_blank" rel="noopener noreferrer">
+        {guia.titulo}
+      </a>
+    </div>
+  ))}
+</Card>
+<Card title="Segundo Medio">
+  {guias2.map(guia => (
+    <div key={guia.id}>
+      <a href={guia.link} target="_blank" rel="noopener noreferrer">
+        {guia.titulo}
+      </a>
+    </div>
+  ))}
+</Card>
+<Card title="Tercero medio">
+  {guias2.map(guia => (
+    <div key={guia.id}>
+      <a href={guia.link} target="_blank" rel="noopener noreferrer">
+        {guia.titulo}
+      </a>
+    </div>
+  ))}
+</Card>
         </div>
       </div>
     </div>

@@ -10,6 +10,6 @@
   
   .cards-container {
     display: flex;
-    justify-content: space-around; /* Espacio entre las tarjetas */
-    margin-top: 20px;
+    flex-direction: column; /* Apilar las tarjetas verticalmente */
+    gap: 20px; /* Espacio entre las tarjetas */
   }
