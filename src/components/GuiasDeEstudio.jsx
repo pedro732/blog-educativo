@@ -58,7 +58,7 @@ function GuiasDeEstudio() {
   ))}
 </Card>
 <Card title="Tercero medio">
-  {guias2.map(guia => (
+  {guias3.map(guia => (
     <div key={guia.id}>
       <a href={guia.link} target="_blank" rel="noopener noreferrer">
         {guia.titulo}
