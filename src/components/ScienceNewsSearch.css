@@ -61,3 +61,9 @@
 .search-result-item a:hover {
   text-decoration: underline;
 }
+
+.error-message {
+  color: #007bff; /* Color azul */
+  margin-top: 10px; /* Espacio arriba del mensaje */
+  font-weight: bold; /* Hacer el texto en negrita */
+}
