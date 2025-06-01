@@ -1,8 +1,10 @@
+// File: mi-blog-app/frontend/src/App.jsx
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Card from './components/Card';
 import GuiasDeEstudio from './components/GuiasDeEstudio';
+import ScienceNewsSearch from './components/ScienceNewsSearch'; // Importar el nuevo componente
 import './App.css';
 import { getCards } from './services/CardService';
 
@@ -32,6 +34,8 @@ function App() {
           <Route path="/" element={
             <>
               <Header />
+              {/* Renderizar el componente de búsqueda aquí, encima del contenedor de tarjetas */}
+              <ScienceNewsSearch />
               <div className="card-container">
                 {cards.map(card => (
                   <Card
