@@ -1,6 +1,6 @@
-const axios = require('axios');
+//const axios = require('axios');
 
-exports.handler = async (event, context) => {
+/*exports.handler = async (event, context) => {
   const apiKey = process.env.NEWS_API_KEY;
   const { queryStringParameters } = event;
   const searchTerm = queryStringParameters.q;
@@ -36,4 +36,4 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ error: 'Error al buscar noticias' }),
     };
   }
-};
+};*/

@@ -15,17 +15,34 @@ function ScienceNewsSearch() {
       return;
     }
 
-    console.log(`Buscando noticias de ciencia para: ${searchTerm}`);
+    console.log(`Buscando artículos de ciencia para: ${searchTerm}`);
 
     try {
-      const response = await axios.get(`/api/fetchNews?q=${encodeURIComponent(searchTerm)}`);
-      setSearchResults(response.data);
-      console.log('Resultados de la búsqueda:', response.data);
+      const response = await axios.get(`http://export.arxiv.org/api/query?search_query=${encodeURIComponent(searchTerm)}&start=0&max_results=10`);
+      const results = response.data; // Aquí puedes procesar los resultados
+      const parsedResults = parseArxivResults(results);
+      setSearchResults(parsedResults);
+      console.log('Resultados de la búsqueda:', parsedResults);
     } catch (error) {
-      console.error('Error al buscar noticias:', error);
-      setError('Error al buscar noticias. Intenta de nuevo.');
+      console.error('Error al buscar artículos:', error);
+      setError('Error al buscar artículos. Intenta de nuevo.');
       setSearchResults([]);
     }
+  };
+
+  const parseArxivResults = (data) => {
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(data, 'text/xml');
+    const entries = xmlDoc.getElementsByTagName('entry');
+    const results = [];
+
+    for (let entry of entries) {
+      results.push({
+        title: entry.getElementsByTagName('title')[0].textContent,
+        url: entry.getElementsByTagName('id')[0].textContent,
+      });
+    }
+    return results;
   };
 
   return (
@@ -33,7 +50,7 @@ function ScienceNewsSearch() {
       <form onSubmit={handleSearch} className="search-form">
         <input
           type="text"
-          placeholder="Buscar noticias de ciencia..."
+          placeholder="Buscar artículos de ciencia..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           className="search-input"
