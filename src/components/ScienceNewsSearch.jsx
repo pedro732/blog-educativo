@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './ScienceNewsSearch.css';
 
 function ScienceNewsSearch() {
@@ -17,13 +18,9 @@ function ScienceNewsSearch() {
     console.log(`Buscando noticias de ciencia para: ${searchTerm}`);
 
     try {
-      const response = await fetch(`/api/fetchNews?q=${encodeURIComponent(searchTerm)}`);
-      if (!response.ok) {
-        throw new Error('Error en la respuesta de la API');
-      }
-      const data = await response.json();
-      setSearchResults(data);
-      console.log('Resultados de la búsqueda:', data);
+      const response = await axios.get(`/api/fetchNews?q=${encodeURIComponent(searchTerm)}`);
+      setSearchResults(response.data);
+      console.log('Resultados de la búsqueda:', response.data);
     } catch (error) {
       console.error('Error al buscar noticias:', error);
       setError('Error al buscar noticias. Intenta de nuevo.');

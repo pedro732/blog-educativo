@@ -1,5 +1,4 @@
-// File: netlify/functions/fetchNews.js
-const fetch = require('node-fetch');
+const axios = require('axios');
 
 exports.handler = async (event, context) => {
   const apiKey = process.env.NEWS_API_KEY;
@@ -14,28 +13,27 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const response = await fetch(`https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=${apiKey}`);
-    
-    if (!response.ok) {
-        const errorData = await response.json();
-        console.error('Error en la respuesta de la API:', errorData);
-        return {
-            statusCode: response.status, // Usar el código de estado de la respuesta
-            body: JSON.stringify({ error: errorData.message || 'Error en la respuesta de la API' }),
-        };
-    }
+    const options = {
+      method: 'GET',
+      url: 'https://api.apitube.io/v1/news/everything',
+      params: {
+        per_page: '50',
+        api_key: apiKey, // Usar la API Key desde las variables de entorno
+        q: searchTerm, // Incluir el término de búsqueda
+      },
+    };
 
-    const data = await response.json();
+    const response = await axios.request(options);
 
     return {
-        statusCode: 200,
-        body: JSON.stringify(data.articles || []),
+      statusCode: 200,
+      body: JSON.stringify(response.data.articles || []),
     };
-} catch (error) {
+  } catch (error) {
     console.error('Error al buscar noticias:', error);
     return {
-        statusCode: 500,
-        body: JSON.stringify({ error: 'Error al buscar noticias' }),
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Error al buscar noticias' }),
     };
-}
+  }
 };
