@@ -19,7 +19,7 @@ function ScienceNewsSearch() {
 
     try {
       const response = await axios.get(`http://export.arxiv.org/api/query?search_query=${encodeURIComponent(searchTerm)}&start=0&max_results=10`);
-      const results = response.data; // Aquí puedes procesar los resultados
+      const results = response.data;
       const parsedResults = parseArxivResults(results);
       setSearchResults(parsedResults);
       console.log('Resultados de la búsqueda:', parsedResults);
@@ -38,8 +38,8 @@ function ScienceNewsSearch() {
 
     for (let entry of entries) {
       results.push({
-        title: entry.getElementsByTagName('title')[0].textContent,
-        url: entry.getElementsByTagName('id')[0].textContent,
+        title: entry.getElementsByTagName('title')[0]?.textContent || 'No title',
+        url: entry.getElementsByTagName('id')[0]?.textContent || '#',
       });
     }
     return results;
