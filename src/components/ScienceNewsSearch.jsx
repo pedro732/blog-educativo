@@ -31,6 +31,12 @@ function ScienceNewsSearch() {
     }
   };
 
+  const handleClear = () => {
+    setSearchTerm('');
+    setSearchResults([]);
+    setError('');
+  };
+
   return (
     <div className="science-news-search-container">
       <form onSubmit={handleSearch} className="search-form">
@@ -42,6 +48,7 @@ function ScienceNewsSearch() {
           className="search-input"
         />
         <button type="submit" className="search-button">Buscar</button>
+        <button type="button" onClick={handleClear} className="clear-button">Limpiar</button>
       </form>
 
       {error && <div className="error-message">{error}</div>}
